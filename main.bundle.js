@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar\">\n  <div class=\"navbar-brand\">\n    <a class=\"navbar-item\" href=\"https://christopherkade.com\">\n      <img src=\"./../assets/images/logo_ck.svg\">\n    </a>\n  </div>\n\n  <button class=\"button navbar-burger\" (click)=\"burger = !burger\" [ngClass]=\"burger ? '' : 'is-active'\">\n    <span></span>\n    <span></span>\n    <span></span>\n  </button>\n\n  <div class=\"navbar-menu\" [ngClass]=\"burger ? '' : 'is-active'\">\n    <div class=\"navbar-end\">\n      <div class=\"navbar-item\">\n        <div *ngIf=\"currentUser\" id=\"user-pic\" [ngStyle]=\"profilePicStyles\"></div>\n        <div *ngIf=\"currentUser\" id=\"user-name\">{{ (user | async)?.displayName }}</div>\n        <button *ngIf=\"currentUser\" id=\"sign-out\" (click)=\"logout()\" class=\"button\">\n          Sign-out\n        </button>\n        <button *ngIf=\"!currentUser\" id=\"sign-in\" (click)=\"login()\" class=\"button\">\n          <i class=\"fa fa-user-circle-o sign-in-icon\" aria-hidden=\"true\"></i> Sign-in with Google\n        </button>\n      </div>\n    </div>\n  </div>\n</nav>\n\n<div class=\"container messages-container\">\n  <div class=\"card messages\" id=\"messages\">\n    <div class=\"card-content messages-card-container\">\n      <span id=\"message-filler\"></span>\n      <div class=\"message-container\" *ngFor=\"let message of messages | async\">\n        <div class=\"spacing\">\n          <div class=\"pic\" [style.background-image]=\"'url(' + message.photoUrl + ')'\"></div>\n        </div>\n        <div class=\"message\">\n          <span *ngIf=\"message.text\" [style]=\"message.sentiment\">{{ message.text }}</span>\n          <img *ngIf=\"message.imageUrl\" [src]=\"message.imageUrl + (message.moderated ? '&amp;moderated=1' : '')\">\n        </div>\n        <div class=\"name\">{{ message.name }}</div>\n      </div>\n    </div>\n  </div>\n\n  <form id=\"message-form\" (submit)=\"saveMessage()\" [formGroup]=\"messageForm\">\n    <div class=\"field is-grouped\">\n      <p class=\"control is-expanded\">\n        <input class=\"input\" id=\"message\" formControlName=\"message\" placeholder=\"Message...\" [(ngModel)]=\"value\">\n      </p>\n      <p class=\"control\">\n        <!-- TODO: Add disabled -->\n        <a type=\"submit\" class=\"button is-info\">\n          Send\n        </a>\n      </p>\n    </div>\n  </form>\n</div>\n"
+module.exports = "<nav class=\"navbar\">\n  <div class=\"navbar-brand\">\n    <a class=\"navbar-item\" href=\"https://christopherkade.com\" target=\"_blank\">\n      <img src=\"./../assets/images/logo_ck.svg\">\n    </a>\n  </div>\n\n  <button class=\"button navbar-burger\" (click)=\"burger = !burger\" [ngClass]=\"burger ? '' : 'is-active'\">\n    <span></span>\n    <span></span>\n    <span></span>\n  </button>\n\n  <div class=\"navbar-menu\" [ngClass]=\"burger ? '' : 'is-active'\">\n    <div class=\"navbar-end\">\n      <div class=\"navbar-item\">\n        <div *ngIf=\"currentUser\" id=\"user-pic\" [ngStyle]=\"profilePicStyles\"></div>\n        <div *ngIf=\"currentUser\" id=\"user-name\">{{ (user | async)?.displayName }}</div>\n        <button *ngIf=\"currentUser\" id=\"sign-out\" (click)=\"logout()\" class=\"button\">\n          Sign-out\n        </button>\n        <button *ngIf=\"!currentUser\" id=\"sign-in\" (click)=\"login()\" class=\"button\">\n          <i class=\"fa fa-user-circle-o sign-in-icon\" aria-hidden=\"true\"></i> Sign-in with Google\n        </button>\n      </div>\n    </div>\n  </div>\n</nav>\n\n<div class=\"container messages-container\">\n  <div class=\"card messages\" id=\"messages\">\n    <div class=\"card-content messages-card-container\">\n      <span id=\"message-filler\"></span>\n      <div class=\"message-container\" *ngFor=\"let message of messages | async\">\n        <div class=\"spacing\">\n          <div class=\"pic\" [style.background-image]=\"'url(' + message.photoUrl + ')'\"></div>\n        </div>\n        <div class=\"message\">\n          <span *ngIf=\"message.text\" [style]=\"message.sentiment\">{{ message.text }}</span>\n          <img *ngIf=\"message.imageUrl\" [src]=\"message.imageUrl + (message.moderated ? '&amp;moderated=1' : '')\">\n        </div>\n        <div class=\"name\">{{ message.name }}</div>\n      </div>\n    </div>\n  </div>\n\n  <form id=\"message-form\" (submit)=\"saveMessage()\" [formGroup]=\"messageForm\">\n    <div class=\"field is-grouped\">\n      <p class=\"control is-expanded\">\n        <input class=\"input\" id=\"message\" formControlName=\"message\" placeholder=\"Message...\" [(ngModel)]=\"value\">\n      </p>\n      <p class=\"control\">\n        <!-- TODO: Add disabled -->\n        <a type=\"submit\" class=\"button is-info\">\n          Send\n        </a>\n      </p>\n    </div>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -32,7 +32,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".messages-card-container {\n  height: calc(100% - 150px);\n  padding-bottom: 0; }\n\n#messages-card {\n  margin-top: 15px; }\n\n.messages-container {\n  margin-top: 15vh; }\n\n.messages {\n  overflow-y: auto;\n  margin-bottom: 10px;\n  height: 50vh; }\n\n#message-filler {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.message-container {\n  display: block;\n  margin-top: 10px;\n  border-top: 1px solid #f3f3f3;\n  padding-top: 10px;\n  transition: opacity 1s ease-in-out; }\n  .message-container:first-of-type {\n    border-top-width: 0; }\n  .message-container.visible {\n    opacity: 1; }\n  .message-container .pic {\n    background-image: url(\"/assets/images/profile_placeholder.png\");\n    background-repeat: no-repeat;\n    width: 30px;\n    height: 30px;\n    background-size: 30px;\n    border-radius: 20px; }\n  .message-container .spacing {\n    display: table-cell;\n    vertical-align: top; }\n  .message-container .message {\n    display: table-cell;\n    width: calc(100% - 40px);\n    padding: 5px 10px 5px 10px; }\n  .message-container .name {\n    display: inline-block;\n    width: 100%;\n    padding-left: 40px;\n    color: #bbb;\n    font-style: italic;\n    font-size: 12px;\n    box-sizing: border-box; }\n\n#message-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  width: calc(100% - 48px);\n  float: left; }\n\n#message-form .mdl-textfield {\n  width: calc(100% - 100px); }\n\n#message-form button {\n  width: 100px;\n  margin: 15px 0 0 10px; }\n\n#user-pic {\n  top: -3px;\n  position: relative;\n  display: inline-block;\n  background-image: url(\"/assets/images/profile_placeholder.png\");\n  background-repeat: no-repeat;\n  width: 40px;\n  height: 40px;\n  background-size: 40px;\n  border-radius: 20px; }\n\n#user-name {\n  font-size: 16px;\n  line-height: 36px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.sign-in-icon {\n  font-size: 1.5em;\n  margin-right: 5px; }\n\n.message img {\n  max-width: 300px;\n  max-height: 200px; }\n", ""]);
+exports.push([module.i, ".messages-card-container {\n  height: calc(100% - 150px);\n  padding-bottom: 0; }\n\n#messages-card {\n  margin-top: 15px; }\n\n.messages-container {\n  margin-top: 15vh; }\n\n.messages {\n  overflow-y: auto;\n  margin-bottom: 10px;\n  height: 50vh; }\n\n#message-filler {\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.message-container {\n  display: block;\n  border-top: 1px solid #f3f3f3;\n  padding-top: 10px;\n  transition: opacity 1s ease-in-out; }\n  .message-container:first-of-type {\n    border-top-width: 0; }\n  .message-container.visible {\n    opacity: 1; }\n  .message-container .pic {\n    background-image: url(\"/assets/images/profile_placeholder.png\");\n    background-repeat: no-repeat;\n    width: 30px;\n    height: 30px;\n    background-size: 30px;\n    border-radius: 20px; }\n  .message-container .spacing {\n    display: table-cell;\n    vertical-align: top; }\n  .message-container .message {\n    display: table-cell;\n    width: calc(100% - 40px);\n    padding: 5px 10px 5px 10px; }\n  .message-container .name {\n    display: inline-block;\n    width: 100%;\n    padding-left: 40px;\n    color: #bbb;\n    font-style: italic;\n    font-size: 12px;\n    box-sizing: border-box; }\n\n#message-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  width: calc(100% - 48px);\n  float: left; }\n\n#message-form .mdl-textfield {\n  width: calc(100% - 100px); }\n\n#message-form button {\n  width: 100px;\n  margin: 15px 0 0 10px; }\n\n#user-pic {\n  top: -3px;\n  position: relative;\n  display: inline-block;\n  background-image: url(\"/assets/images/profile_placeholder.png\");\n  background-repeat: no-repeat;\n  width: 40px;\n  height: 40px;\n  background-size: 40px;\n  border-radius: 20px; }\n\n#user-name {\n  font-size: 16px;\n  line-height: 36px;\n  padding-right: 10px;\n  padding-left: 10px; }\n\n.sign-in-icon {\n  font-size: 1.5em;\n  margin-right: 5px; }\n\n.message img {\n  max-width: 300px;\n  max-height: 200px; }\n\n@media screen and (max-width: 1000px) {\n  .messages-container {\n    margin-right: 2vh;\n    margin-left: 2vh; } }\n", ""]);
 
 // exports
 
@@ -67,7 +67,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 var PROFILE_PLACEHOLDER_IMAGE_URL = '/assets/images/profile_placeholder.png';
 var AppComponent = (function () {
     function AppComponent(db, afAuth, fb) {
@@ -75,8 +74,9 @@ var AppComponent = (function () {
         this.db = db;
         this.afAuth = afAuth;
         this.fb = fb;
-        this.value = '';
         this.burger = false;
+        this.value = '';
+        // Set up our message form (message box)
         this.messageForm = fb.group({
             'message': [null, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required]
         });
@@ -121,7 +121,6 @@ var AppComponent = (function () {
     };
     // Returns true if user is signed-in. Otherwise false and displays a message.
     AppComponent.prototype.checkSignedInWithMessage = function () {
-        // Return true if the user is signed in Firebase
         if (this.currentUser) {
             return true;
         }
@@ -138,17 +137,12 @@ var AppComponent = (function () {
                 text: this.value,
                 photoUrl: this.currentUser.photoURL || PROFILE_PLACEHOLDER_IMAGE_URL
             }).then(function () {
-                // Clear message text field and SEND button state.
+                // Clear message text field
                 _this.value = '';
             }).catch(function (err) {
                 console.error(err);
             });
         }
-    };
-    // TODO: Refactor into image message form component
-    AppComponent.prototype.onImageClick = function (event) {
-        event.preventDefault();
-        document.getElementById('mediaCapture').click();
     };
     // Saves the messaging device token to the datastore.
     AppComponent.prototype.saveMessagingDeviceToken = function () {
@@ -164,10 +158,19 @@ var AppComponent = (function () {
             }
             else {
                 // Need to request permissions to show notifications.
-                // TODO: Add Notifications
-                // return this.requestNotificationsPermissions();
+                return _this.requestNotificationsPermissions();
             }
         }).catch(function (err) {
+            console.error(err);
+        });
+    };
+    ;
+    // Requests permissions to show notifications.
+    AppComponent.prototype.requestNotificationsPermissions = function () {
+        var _this = this;
+        return __WEBPACK_IMPORTED_MODULE_4_firebase__["messaging"]().requestPermission()
+            .then(function () { return _this.saveMessagingDeviceToken(); })
+            .catch(function (err) {
             console.error(err);
         });
     };
