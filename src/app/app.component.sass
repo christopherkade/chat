@@ -1,12 +1,30 @@
 @import ../styles
 
-.navbar
+// NAVBAR
+.navbar, .navbar-burger, .navbar-menu
   background-color: $secondary
 
-.messages-card-container
-  height: calc(100% - 150px)
-  padding-bottom: 0
+#user-pic
+  top: -3px
+  display: inline-block
+  background-image: url('/assets/images/profile_placeholder.png')
+  background-repeat: no-repeat
+  width: 40px
+  height: 40px
+  background-size: 40px
+  border-rfadius: 20px
 
+#user-name
+  font-size: 16px
+  line-height: 36px
+  padding-right: 10px
+  padding-left: 10px
+
+.sign-in-icon
+  font-size: 1.5em
+  margin-right: 5px
+
+// MESSAGE BOX
 .submit-button
   background-color: $secondary
 
@@ -60,32 +78,14 @@
   width: calc(100% - 48px)
   float: left
 
-#user-pic
-  top: -3px
-  position: relative
-  display: inline-block
-  background-image: url('/assets/images/profile_placeholder.png')
-  background-repeat: no-repeat
-  width: 40px
-  height: 40px
-  background-size: 40px
-  border-radius: 20px
-
-#user-name
-  font-size: 16px
-  line-height: 36px
-  padding-right: 10px
-  padding-left: 10px
-
-.sign-in-icon
-  font-size: 1.5em
-  margin-right: 5px
-
 .message img
   max-width: 300px
   max-height: 200px
 
-@media screen and (max-width: 1000px)
+@media screen and (max-width: 1023px)
   .messages-container
     margin-right: 2vh
     margin-left: 2vh
+
+  .user-item
+    text-align: center
