@@ -81,6 +81,7 @@ var AppComponent = (function () {
         this.user.subscribe(function (user) {
             console.log(user);
             _this.currentUser = user;
+            // User is signed in!
             if (user) {
                 _this.profilePicStyles = {
                     'background-image': "url(" + _this.currentUser.photoURL + ")"
