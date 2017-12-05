@@ -38,17 +38,14 @@
     </div>
   </div>
 
-  <form id="message-form" (submit)="saveMessage()" [formGroup]="messageForm">
-    <div class="field is-grouped">
-      <p class="control is-expanded">
+    <form id="message-form"  class="field is-grouped is-grouped-centered" (submit)="saveMessage()" [formGroup]="messageForm">
+      <p class="control">
         <input class="input is-primary" id="message" formControlName="message" placeholder="Message" [(ngModel)]="value">
       </p>
       <p class="control">
-        <!-- TODO: Add disabled -->
         <a type="submit" class="button submit-button">
           Send
         </a>
       </p>
-    </div>
-  </form>
+    </form>
 </div>
