@@ -1,0 +1,88 @@
+.messages-card-container
+  height: calc(100% - 150px)
+  padding-bottom: 0
+
+#messages-card
+  margin-top: 15px
+
+.messages-container
+  margin-top: 15vh
+
+.messages
+  overflow-y: auto
+  margin-bottom: 10px
+  height: 50vh
+
+#message-filler
+  flex-grow: 1
+
+.message-container
+  &:first-of-type
+    border-top-width: 0
+  display: block
+  margin-top: 10px
+  border-top: 1px solid #f3f3f3
+  padding-top: 10px
+  transition: opacity 1s ease-in-out
+  &.visible
+    opacity: 1
+  .pic
+    background-image: url('/assets/images/profile_placeholder.png')
+    background-repeat: no-repeat
+    width: 30px
+    height: 30px
+    background-size: 30px
+    border-radius: 20px
+  .spacing
+    display: table-cell
+    vertical-align: top
+  .message
+    display: table-cell
+    width: calc(100% - 40px)
+    padding: 5px 10px 5px 10px
+  .name
+    display: inline-block
+    width: 100%
+    padding-left: 40px
+    color: #bbb
+    font-style: italic
+    font-size: 12px
+    box-sizing: border-box
+
+#message-form
+  display: flex
+  flex-direction: row
+  width: calc(100% - 48px)
+  float: left
+
+#message-form
+  .mdl-textfield
+    width: calc(100% - 100px)
+  button
+    width: 100px
+    margin: 15px 0 0 10px
+
+#user-pic
+  top: -3px
+  position: relative
+  display: inline-block
+  background-image: url('/assets/images/profile_placeholder.png')
+  background-repeat: no-repeat
+  width: 40px
+  height: 40px
+  background-size: 40px
+  border-radius: 20px
+
+#user-name
+  font-size: 16px
+  line-height: 36px
+  padding-right: 10px
+  padding-left: 10px
+
+.sign-in-icon
+  font-size: 1.5em
+  margin-right: 5px
+
+.message img
+  max-width: 300px
+  max-height: 200px
