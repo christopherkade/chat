@@ -25,9 +25,8 @@
 </nav>
 
 <div class="container messages-container">
-  <div class="card messages" id="messages">
+  <div class="card messages-card" id="messages">
     <div class="card-content messages-card-container">
-      <span id="message-filler"></span>
       <div class="message-container" *ngFor="let message of messages | async">
         <div class="spacing">
           <div class="pic" [style.background-image]="'url(' + message.photoUrl + ')'"></div>
@@ -41,14 +40,14 @@
     </div>
   </div>
 
-  <form id="message-form" class="field is-grouped" (submit)="saveMessage()" [formGroup]="messageForm">
-    <p class="control">
-      <input class="input is-primary" id="message" formControlName="message" placeholder="Message" [(ngModel)]="value">
-    </p>
-    <p class="control">
+  <form class="field has-addons" (submit)="saveMessage()" [formGroup]="messageForm">
+    <div class="control is-expanded">
+      <input class="input is-medium is-primary" id="message" formControlName="message" placeholder="Message" [(ngModel)]="value">
+    </div>
+    <div class="control">
       <a type="submit" class="button submit-button">
         Send
       </a>
-    </p>
+    </div>
   </form>
 </div>

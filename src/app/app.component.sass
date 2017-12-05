@@ -28,28 +28,19 @@
 // MESSAGE BOX
 .submit-button
   background-color: $secondary
+  height: 100%
 
 .messages-container
   margin-top: 15vh
 
-.messages
+.messages-card
   border-radius: 5px
   overflow-y: auto
   margin-bottom: 10px
   height: 50vh
 
-#message-filler
-  flex-grow: 1
-
 .message-container
-  &:first-of-type
-    border-top-width: 0
-  display: block
-  border-top: 1px solid #f3f3f3
-  padding-top: 10px
-  transition: opacity 1s ease-in-out
-  &.visible
-    opacity: 1
+  margin-top: 15px
   .pic
     background-image: url('/assets/images/profile_placeholder.png')
     background-repeat: no-repeat
@@ -63,7 +54,6 @@
   .message
     display: table-cell
     width: calc(100% - 40px)
-    padding: 5px 10px 5px 10px
   .name
     display: inline-block
     width: 100%
@@ -72,12 +62,6 @@
     font-style: italic
     font-size: 12px
     box-sizing: border-box
-
-#message-form
-  display: flex
-  flex-direction: row
-  width: calc(100% - 48px)
-  float: left
 
 .message img
   max-width: 300px
