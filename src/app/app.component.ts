@@ -5,7 +5,6 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 
-const LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 const PROFILE_PLACEHOLDER_IMAGE_URL = '/assets/images/profile_placeholder.png';
 
 @Component({
@@ -19,13 +18,15 @@ export class AppComponent {
   messages: FirebaseListObservable<any>;
   profilePicStyles: {};
   value = '';
-  messageForm : FormGroup;
+  messageForm: FormGroup;
   burger = false;
 
-  constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, private fb: FormBuilder) {
+  constructor(public db: AngularFireDatabase,
+    public afAuth: AngularFireAuth, private fb: FormBuilder) {
+    // Set up our message form (message box)
     this.messageForm = fb.group({
-       'message': [null, Validators.required]
-     });
+      'message': [null, Validators.required]
+    });
 
     this.user = afAuth.authState;
     this.user.subscribe((user: firebase.User) => {
@@ -34,7 +35,7 @@ export class AppComponent {
       // User is signed in!
       if (user) {
         this.profilePicStyles = {
-          'background-image':  `url(${this.currentUser.photoURL})`
+          'background-image': `url(${this.currentUser.photoURL})`
         };
 
         // We load currently existing chat messages.
@@ -56,7 +57,7 @@ export class AppComponent {
         this.saveMessagingDeviceToken();
       } else { // User is signed out!
         this.profilePicStyles = {
-          'background-image':  PROFILE_PLACEHOLDER_IMAGE_URL
+          'background-image': PROFILE_PLACEHOLDER_IMAGE_URL
         };
       }
     });
@@ -73,11 +74,9 @@ export class AppComponent {
 
   // Returns true if user is signed-in. Otherwise false and displays a message.
   checkSignedInWithMessage() {
-    // Return true if the user is signed in Firebase
     if (this.currentUser) {
       return true;
     }
-
     return false;
   };
 
@@ -90,18 +89,12 @@ export class AppComponent {
         text: this.value,
         photoUrl: this.currentUser.photoURL || PROFILE_PLACEHOLDER_IMAGE_URL
       }).then(() => {
-        // Clear message text field and SEND button state.
+        // Clear message text field
         this.value = '';
       }).catch((err) => {
         console.error(err);
       });
     }
-  }
-
-  // TODO: Refactor into image message form component
-  onImageClick(event: any) {
-    event.preventDefault();
-    document.getElementById('mediaCapture').click();
   }
 
   // Saves the messaging device token to the datastore.
