@@ -2,6 +2,10 @@
 
 A simple chat room developed using Angular & Firebase (Authentication, Realtime Database & Cloud functions).
 
+The messages in this chat room do not reflect in any way my opinions, this tool may be used by anyone and therefore may contain any type of content.
+
+Feel free to try it out !
+
 ### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
