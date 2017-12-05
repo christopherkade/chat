@@ -108,21 +108,8 @@ export class AppComponent {
             .ref('/fcmTokens')
             .child(currentToken)
             .set(this.currentUser.uid);
-        } else {
-          // Need to request permissions to show notifications.
-          return this.requestNotificationsPermissions();
         }
       }).catch((err) => {
-        console.error(err);
-      });
-  };
-
-  // Requests permissions to show notifications.
-  requestNotificationsPermissions() {
-    return firebase.messaging().requestPermission()
-      // Notification permission granted.
-      .then(() => this.saveMessagingDeviceToken())
-      .catch((err) => {
         console.error(err);
       });
   };
