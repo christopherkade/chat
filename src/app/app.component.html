@@ -1,60 +1,60 @@
-<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://christopherkade.com">
-        <img src="./../assets/images/logo_ck.svg">
-      </a>
-    </div>
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://christopherkade.com">
+      <img src="./../assets/images/logo_ck.svg">
+    </a>
+  </div>
 
+  <button class="button navbar-burger" (click)="burger = !burger" [ngClass]="burger ? '' : 'is-active'">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="navbar-menu" [ngClass]="burger ? '' : 'is-active'">
     <div class="navbar-end">
       <div class="navbar-item">
         <div *ngIf="currentUser" id="user-pic" [ngStyle]="profilePicStyles"></div>
         <div *ngIf="currentUser" id="user-name">{{ (user | async)?.displayName }}</div>
         <button *ngIf="currentUser" id="sign-out" (click)="logout()" class="button">
-            Sign-out
+          Sign-out
         </button>
         <button *ngIf="!currentUser" id="sign-in" (click)="login()" class="button">
-            <i class="fa fa-user-circle-o sign-in-icon" aria-hidden="true"></i> Sign-in with Google
+          <i class="fa fa-user-circle-o sign-in-icon" aria-hidden="true"></i> Sign-in with Google
         </button>
       </div>
     </div>
+  </div>
+</nav>
 
-    <!-- <button class="button navbar-burger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button> -->
-  </nav>
-
-  <div class="container messages-container">
-    <div class="card messages" id="messages">
-      <div class="card-content messages-card-container">
-        <span id="message-filler"></span>
-        <div class="message-container" *ngFor="let message of messages | async">
-          <div class="spacing">
-            <div class="pic" [style.background-image]="'url(' + message.photoUrl + ')'"></div>
-          </div>
-          <div class="message">
-            <span *ngIf="message.text" [style]="message.sentiment">{{ message.text }}</span>
-            <img *ngIf="message.imageUrl" [src]="message.imageUrl + (message.moderated ? '&amp;moderated=1' : '')">
-          </div>
-          <div class="name">{{ message.name }}</div>
+<div class="container messages-container">
+  <div class="card messages" id="messages">
+    <div class="card-content messages-card-container">
+      <span id="message-filler"></span>
+      <div class="message-container" *ngFor="let message of messages | async">
+        <div class="spacing">
+          <div class="pic" [style.background-image]="'url(' + message.photoUrl + ')'"></div>
         </div>
+        <div class="message">
+          <span *ngIf="message.text" [style]="message.sentiment">{{ message.text }}</span>
+          <img *ngIf="message.imageUrl" [src]="message.imageUrl + (message.moderated ? '&amp;moderated=1' : '')">
+        </div>
+        <div class="name">{{ message.name }}</div>
       </div>
     </div>
-
-    <form id="message-form" (submit)="saveMessage()" [formGroup]="messageForm">
-      <div class="field is-grouped">
-        <p class="control is-expanded">
-          <input class="input" id="message" formControlName="message" placeholder="Message..." [(ngModel)]="value">
-        </p>
-        <p class="control">
-          <!-- TODO: Add disabled -->
-          <a type="submit" class="button is-info">
-            Send
-          </a>
-        </p>
-      </div>
-    </form>
   </div>
+
+  <form id="message-form" (submit)="saveMessage()" [formGroup]="messageForm">
+    <div class="field is-grouped">
+      <p class="control is-expanded">
+        <input class="input" id="message" formControlName="message" placeholder="Message..." [(ngModel)]="value">
+      </p>
+      <p class="control">
+        <!-- TODO: Add disabled -->
+        <a type="submit" class="button is-info">
+          Send
+        </a>
+      </p>
+    </div>
+  </form>
 </div>

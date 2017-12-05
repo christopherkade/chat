@@ -20,6 +20,7 @@ export class AppComponent {
   profilePicStyles: {};
   value = '';
   messageForm : FormGroup;
+  burger = false;
 
   constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, private fb: FormBuilder) {
     this.messageForm = fb.group({
