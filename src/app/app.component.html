@@ -1,10 +1,4 @@
 <nav class="navbar">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://christopherkade.com" target="_blank">
-      <img src="./../assets/images/logo_ck.svg">
-    </a>
-  </div>
-
   <button class="button navbar-burger" (click)="burger = !burger" [ngClass]="burger ? '' : 'is-active'">
     <span></span>
     <span></span>
@@ -16,10 +10,10 @@
       <div class="navbar-item">
         <div *ngIf="currentUser" id="user-pic" [ngStyle]="profilePicStyles"></div>
         <div *ngIf="currentUser" id="user-name">{{ (user | async)?.displayName }}</div>
-        <button *ngIf="currentUser" id="sign-out" (click)="logout()" class="button">
+        <button *ngIf="currentUser" id="sign-out" (click)="logout()" class="button is-primary">
           Sign-out
         </button>
-        <button *ngIf="!currentUser" id="sign-in" (click)="login()" class="button">
+        <button *ngIf="!currentUser" id="sign-in" (click)="login()" class="button is-primary">
           <i class="fa fa-user-circle-o sign-in-icon" aria-hidden="true"></i> Sign-in with Google
         </button>
       </div>
@@ -47,11 +41,11 @@
   <form id="message-form" (submit)="saveMessage()" [formGroup]="messageForm">
     <div class="field is-grouped">
       <p class="control is-expanded">
-        <input class="input" id="message" formControlName="message" placeholder="Message..." [(ngModel)]="value">
+        <input class="input is-primary" id="message" formControlName="message" placeholder="Message" [(ngModel)]="value">
       </p>
       <p class="control">
         <!-- TODO: Add disabled -->
-        <a type="submit" class="button is-info">
+        <a type="submit" class="button submit-button">
           Send
         </a>
       </p>
