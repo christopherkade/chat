@@ -13,13 +13,13 @@ const PROFILE_PLACEHOLDER_IMAGE_URL = '/assets/images/profile_placeholder.png';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
+  messages: FirebaseListObservable<any>;
   user: Observable<firebase.User>;
   currentUser: firebase.User;
-  messages: FirebaseListObservable<any>;
-  profilePicStyles: {};
-  value = '';
   messageForm: FormGroup;
+  profilePicStyles: {};
   burger = false;
+  value = '';
 
   constructor(public db: AngularFireDatabase,
     public afAuth: AngularFireAuth, private fb: FormBuilder) {
@@ -44,6 +44,7 @@ export class AppComponent {
             limitToLast: 12
           }
         });
+
         this.messages.subscribe((messages) => {
           // Make sure new message scroll into view
           setTimeout(() => {
@@ -109,8 +110,7 @@ export class AppComponent {
             .set(this.currentUser.uid);
         } else {
           // Need to request permissions to show notifications.
-          // TODO: Add Notifications
-          // return this.requestNotificationsPermissions();
+          return this.requestNotificationsPermissions();
         }
       }).catch((err) => {
         console.error(err);
@@ -118,13 +118,12 @@ export class AppComponent {
   };
 
   // Requests permissions to show notifications.
-  // requestNotificationsPermissions() {
-  //   console.log('Requesting notifications permission...');
-  //   return firebase.messaging().requestPermission()
-  //     // Notification permission granted.
-  //     .then(() => this.saveMessagingDeviceToken())
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // };
+  requestNotificationsPermissions() {
+    return firebase.messaging().requestPermission()
+      // Notification permission granted.
+      .then(() => this.saveMessagingDeviceToken())
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 }
