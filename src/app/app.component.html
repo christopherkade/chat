@@ -38,14 +38,14 @@
     </div>
   </div>
 
-    <form id="message-form"  class="field is-grouped is-grouped-centered" (submit)="saveMessage()" [formGroup]="messageForm">
-      <p class="control">
-        <input class="input is-primary" id="message" formControlName="message" placeholder="Message" [(ngModel)]="value">
-      </p>
-      <p class="control">
-        <a type="submit" class="button submit-button">
-          Send
-        </a>
-      </p>
-    </form>
+  <form id="message-form" class="field is-grouped" (submit)="saveMessage()" [formGroup]="messageForm">
+    <p class="control">
+      <input class="input is-primary" id="message" formControlName="message" placeholder="Message" [(ngModel)]="value">
+    </p>
+    <p class="control">
+      <a type="submit" class="button submit-button">
+        Send
+      </a>
+    </p>
+  </form>
 </div>
