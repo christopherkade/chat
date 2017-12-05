@@ -156,21 +156,7 @@ var AppComponent = (function () {
                     .child(currentToken)
                     .set(_this.currentUser.uid);
             }
-            else {
-                // Need to request permissions to show notifications.
-                return _this.requestNotificationsPermissions();
-            }
         }).catch(function (err) {
-            console.error(err);
-        });
-    };
-    ;
-    // Requests permissions to show notifications.
-    AppComponent.prototype.requestNotificationsPermissions = function () {
-        var _this = this;
-        return __WEBPACK_IMPORTED_MODULE_4_firebase__["messaging"]().requestPermission()
-            .then(function () { return _this.saveMessagingDeviceToken(); })
-            .catch(function (err) {
             console.error(err);
         });
     };
